@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:padding="24dp"
+    tools:context=".pertemuan4.CustomOneActivity">
+
+    <ImageView
+        android:id="@+id/iv_back_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/text_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Back"
+        android:textColor="@color/text_dark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back_1"
+        app:layout_constraintStart_toEndOf="@id/iv_back_1"
+        app:layout_constraintTop_toTopOf="@id/iv_back_1" />
+
+    <TextView
+        android:id="@+id/tv_custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Judul Placeholder"
+        android:textColor="@color/text_dark"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_back_1" />
+
+    <TextView
+        android:id="@+id/tv_custom_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="Deskripsi placeholder akan diganti oleh Kotlin."
+        android:textColor="@color/text_gray"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_custom_title" />
+
+    <ImageView
+        android:id="@+id/iv_center_illustration"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_custom_desc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
