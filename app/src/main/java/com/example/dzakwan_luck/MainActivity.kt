@@ -21,14 +21,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Setup ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Lifecycle: onCreate (Sistem membuat halaman)
         Log.d(TAG, "onCreate: Halaman Utama Dibuat")
-
         // ==========================================
         // TOMBOL 1: Pindah ke Kalkulator (Pertemuan 2)
         // ==========================================

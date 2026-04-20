@@ -10,5 +10,9 @@
     <color name="border_gray">#E2E8F0</color>
     <color name="bg_screen">#FAFAFA</color>
     <color name="danger_red">#FC8181</color>
+    <color name="primary_green">#1A3C34</color>
+    <color name="accent_green">#27AE60</color>
+    <color name="bg_light">#F4F7F6</color>
+    <color name="text_main">#333333</color>
 
 </resources>
