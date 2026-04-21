@@ -23,9 +23,16 @@ class CustomOneActivity : AppCompatActivity() {
             binding.tvCustomDesc.text = descFromIntent
         }
 
-        // Tombol Back (Opsional)
-        binding.ivBack1.setOnClickListener {
-            finish() // Menutup halaman saat ini
+        setSupportActionBar(binding.toolbarCustomOne)
+        supportActionBar?.apply {
+            title = "Detail Data"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

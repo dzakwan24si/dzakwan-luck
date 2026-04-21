@@ -13,6 +13,13 @@ class CustomTwoActivity : AppCompatActivity() {
         binding = ActivityCustomTwoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbarCustomTwo)
+        supportActionBar?.apply {
+            title = "Tentang Aplikasi" // Bisa disesuaikan dengan judul halamanmu
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         // Menangkap dan memasang data dari Intent Extra
         val titleFromIntent = intent.getStringExtra("EXTRA_TITLE")
         val descFromIntent = intent.getStringExtra("EXTRA_DESC")
@@ -26,5 +33,10 @@ class CustomTwoActivity : AppCompatActivity() {
         binding.btnContinue.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

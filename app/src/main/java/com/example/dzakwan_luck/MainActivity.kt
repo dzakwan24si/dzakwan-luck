@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import com.example.dzakwan_luck.databinding.ActivityMainBinding // Sesuaikan dengan nama layoutmu
 import com.example.dzakwan_luck.pertemuan3.P3Activity
 import com.example.dzakwan_luck.pertemuan4.CustomOneActivity
 import com.example.dzakwan_luck.pertemuan4.CustomTwoActivity
+import com.example.dzakwan_luck.pertemuan6.WebBinaDesaActivity
 import com.google.android.material.snackbar.Snackbar
+import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +27,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.d(TAG, "onCreate: Halaman Utama Dibuat")
+
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        // 1. Menghidupkan Toolbar
+        setSupportActionBar(binding.toolbarMain)
+        supportActionBar?.apply {
+            title = "Dashboard Bina Desa"
+            // Catatan: Di MainActivity biasanya tidak butuh panah Back
+            // karena ini halaman utama. Panah back kita pasang di halaman Web nanti.
+        }
+
+        // 2. Aksi ketika tombol "Buka Web" diklik
+        binding.btnOpenWeb.setOnClickListener {
+            // Pindah ke halaman WebView
+            val intent = Intent(this, WebBinaDesaActivity::class.java)
+            startActivity(intent)
+        }
         // ==========================================
         // TOMBOL 1: Pindah ke Kalkulator (Pertemuan 2)
         // ==========================================
@@ -33,23 +53,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ==========================================
-        // TOMBOL 2: Halaman Custom 1 (Membawa Data Extra)
+        // TOMBOL 2: Data Aset (Halaman Custom 1)
         // ==========================================
         binding.btnJobVacancy.setOnClickListener {
             val intent = Intent(this, CustomOneActivity::class.java)
-            // Menyisipkan data (Kunci, Nilai)
-            intent.putExtra("EXTRA_TITLE", "Lowongan Terbaru")
-            intent.putExtra("EXTRA_DESC", "Temukan pekerjaan impianmu yang sesuai dengan keahlianmu di sini!")
+            // Menyisipkan data (Kunci, Nilai) untuk Inventaris
+            intent.putExtra("EXTRA_TITLE", "Manajemen Data Aset")
+            intent.putExtra("EXTRA_DESC", "Pantau dan kelola seluruh daftar aset milik desa, mulai dari peralatan kantor hingga infrastruktur, secara akurat.")
             startActivity(intent)
         }
 
         // ==========================================
-        // TOMBOL 3: Halaman Custom 2 (Membawa Data Extra)
+        // TOMBOL 3: Tentang Aplikasi (Halaman Custom 2)
         // ==========================================
         binding.btnCareerTips.setOnClickListener {
             val intent = Intent(this, CustomTwoActivity::class.java)
-            intent.putExtra("EXTRA_TITLE", "Tips Karir SobatKerja")
-            intent.putExtra("EXTRA_DESC", "Kumpulan artikel dan tips jitu untuk lolos wawancara kerja dengan mudah.")
+            // Menyisipkan informasi mengenai project Bina Desa
+            intent.putExtra("EXTRA_TITLE", "Tentang Bina Desa")
+            intent.putExtra("EXTRA_DESC", "Aplikasi Sistem Informasi Inventaris Aset Desa yang dirancang untuk meningkatkan transparansi dan akuntabilitas pengelolaan aset.")
             startActivity(intent)
         }
 
@@ -59,10 +80,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Konfirmasi Logout")
-            builder.setMessage("Apakah Anda yakin ingin keluar dari aplikasi SobatKerja?")
+            builder.setMessage("Apakah Anda yakin ingin keluar dari aplikasi Inventaris Desa?")
 
             // Jika tombol "Ya" diklik
             builder.setPositiveButton("Ya") { dialog, which ->
+                dialog.dismiss()
+                sharedPref.edit {
+                    clear()
+                }
                 val intent = Intent(this, P3Activity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

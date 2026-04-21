@@ -19,7 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/logo_sobatkerja"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Welcome to\nSobatKerja"
+            android:text="    Welcome to\nInventaris Desa"
             android:textColor="#2D3748"
             android:textSize="29sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#8154F7"
+            android:backgroundTint="@color/primary_blue_desa"
             android:fontFamily="@font/poppins_bold"
             android:text="Sign in"
             android:textAllCaps="false"
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Sign up"
-                android:textColor="#8154F7"
+                android:textColor="@color/primary_blue_desa"
                 android:textSize="14sp" />
         </LinearLayout>
 

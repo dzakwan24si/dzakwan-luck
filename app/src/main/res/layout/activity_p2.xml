@@ -1,136 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivitya">
+    android:orientation="vertical"
+    tools:context=".pertemuan2.P2Activity">
 
-    <TextView
-        android:id="@+id/tv_title_segitiga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Hitung Luas Segitiga"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_alas"
-        android:layout_width="303dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:hint="Masukkan Alas"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_segitiga" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_kalkulator"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_blue_desa"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <EditText
-        android:id="@+id/et_tinggi_segitiga"
-        android:layout_width="303dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:hint="Masukkan Tinggi"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_alas" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <Button
-        android:id="@+id/btn_hitung_segitiga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hitung Luas"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/et_tinggi_segitiga"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_hasil_segitiga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hasil: 0"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_hitung_segitiga"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_underlined"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_title_balok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Hitung Volume Balok"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_hasil_segitiga" />
+            <TextView
+                android:id="@+id/tv_title_segitiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Hitung Luas Segitiga"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/et_panjang"
-        android:layout_width="303dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:hint="Masukkan Panjang"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_balok"
-        tools:layout_editor_absoluteX="-4dp" />
+            <EditText
+                android:id="@+id/et_alas"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan Alas"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_segitiga" />
 
-    <EditText
-        android:id="@+id/et_lebar"
-        android:layout_width="303dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:hint="Masukkan Lebar"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/et_panjang"
-        tools:layout_editor_absoluteX="-4dp" />
+            <EditText
+                android:id="@+id/et_tinggi_segitiga"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan Tinggi"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_alas" />
 
-    <EditText
-        android:id="@+id/et_tinggi_balok"
-        android:layout_width="303dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:hint="Masukkan Tinggi"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/et_lebar"
-        tools:layout_editor_absoluteX="-4dp" />
+            <Button
+                android:id="@+id/btn_hitung_segitiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hitung Luas"
+                android:backgroundTint="@color/primary_blue_desa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_tinggi_segitiga" />
 
-    <Button
-        android:id="@+id/btn_hitung_balok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hitung Volume"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/et_tinggi_balok"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/tv_hasil_segitiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Hasil: 0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_hitung_segitiga" />
 
-    <TextView
-        android:id="@+id/tv_hasil_balok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hasil: 0"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_hitung_balok"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/tv_title_balok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="Hitung Volume Balok"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_hasil_segitiga" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_underlined"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/et_panjang"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan Panjang"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_balok" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/et_lebar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan Lebar"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_panjang" />
+
+            <EditText
+                android:id="@+id/et_tinggi_balok"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Masukkan Tinggi"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_lebar" />
+
+            <Button
+                android:id="@+id/btn_hitung_balok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hitung Volume"
+                android:backgroundTint="@color/primary_blue_desa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_tinggi_balok" />
+
+            <TextView
+                android:id="@+id/tv_hasil_balok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Hasil: 0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_hitung_balok" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

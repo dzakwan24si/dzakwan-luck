@@ -25,19 +25,22 @@ class SplashScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Akses SharedPreferences
+        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        //Kondisi jika isLogin bernilai true
         val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Kill AuthActivity
+        }
 
         lifecycleScope.launch {
-            delay(2000)
-            if (isLogin) {
-                // Jika sudah login, langsung ke Dashboard (MainActivity)
-                startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
-            } else {
-                // Jika belum, arahkan ke Login (AuthActivity)
-                startActivity(Intent(this@SplashScreenActivity, P3Activity::class.java))
-            }
+            delay(2000) //simulasi pengambilan data selama 2 detik
+
+            var intent = Intent(this@SplashScreenActivity, P3Activity::class.java)
+            startActivity(intent)
             finish()
         }
     }

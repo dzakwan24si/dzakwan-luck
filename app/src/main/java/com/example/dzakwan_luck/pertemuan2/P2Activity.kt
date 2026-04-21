@@ -7,11 +7,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.dzakwan_luck.databinding.ActivityP2Binding
+import com.example.dzakwan_luck.databinding.ActivityP3Binding
 
 class P2Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityP2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_p2)
+        binding = ActivityP2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // MENGAKTIFKAN TOOLBAR & TOMBOL BACK
+        setSupportActionBar(binding.toolbarKalkulator) // Sesuaikan nama ID toolbar-nya
+        supportActionBar?.apply {
+            title = "Kalkulator Aset"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         // --- DEKLARASI KOMPONEN SEGITIGA ---
         val etAlas = findViewById<EditText>(R.id.et_alas)
@@ -67,5 +79,10 @@ class P2Activity : AppCompatActivity() {
                 Log.w("DzakwanApp", "Gagal hitung balok: Input kosong")
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }
