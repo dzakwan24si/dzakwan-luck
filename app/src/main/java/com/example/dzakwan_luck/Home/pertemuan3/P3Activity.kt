@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.pertemuan3
+package com.example.dzakwan_luck.Home.pertemuan3
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.dzakwan_luck.MainActivity
 import com.example.dzakwan_luck.databinding.ActivityP3Binding
 import androidx.core.content.edit
+import com.example.dzakwan_luck.BaseActivity
+import com.example.dzakwan_luck.Home.HomeFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class P3Activity : AppCompatActivity() {
@@ -31,7 +33,7 @@ class P3Activity : AppCompatActivity() {
                     putString("username", username)
                 }
                 Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
 

@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.pertemuan6
+package com.example.dzakwan_luck.Home.pertemuan6
 
 import android.os.Bundle
 import android.webkit.WebViewClient

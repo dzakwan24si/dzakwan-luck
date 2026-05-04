@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.dzakwan_luck.databinding.ActivityMainBinding
+import com.example.dzakwan_luck.Home.HomeFragment
 import com.example.dzakwan_luck.databinding.ActivitySplashScreenBinding
-import com.example.dzakwan_luck.pertemuan3.P3Activity
+import com.example.dzakwan_luck.Home.pertemuan3.P3Activity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -31,7 +31,7 @@ class SplashScreenActivity : AppCompatActivity() {
         //Kondisi jika isLogin bernilai true
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
             finish() // Kill AuthActivity
         }

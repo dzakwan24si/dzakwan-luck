@@ -1,54 +1,51 @@
-package com.example.dzakwan_luck
+package com.example.dzakwan_luck.Home
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.example.dzakwan_luck.databinding.ActivityMainBinding // Sesuaikan dengan nama layoutmu
 import com.example.dzakwan_luck.Home.pertemuan3.P3Activity
 import com.example.dzakwan_luck.Home.pertemuan4.CustomOneActivity
 import com.example.dzakwan_luck.Home.pertemuan4.CustomTwoActivity
 import com.example.dzakwan_luck.Home.pertemuan6.WebBinaDesaActivity
+import com.example.dzakwan_luck.P2Activity
+import com.example.dzakwan_luck.R
+import com.example.dzakwan_luck.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlin.jvm.java
 
-class MainActivity : AppCompatActivity() {
+class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    // Inisialisasi ViewBinding
-    private lateinit var binding: ActivityMainBinding
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
-    // Tag untuk Logcat Lifecycle
-    private val TAG = "Lifecycle_Log"
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        Log.d(TAG, "onCreate: Halaman Utama Dibuat")
-
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-
-        // 1. Menghidupkan Toolbar
-        setSupportActionBar(binding.toolbarMain)
-        supportActionBar?.apply {
-            title = "Dashboard Bina Desa"
-            // Catatan: Di MainActivity biasanya tidak butuh panah Back
-            // karena ini halaman utama. Panah back kita pasang di halaman Web nanti.
-        }
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home Inventaris"
 
         // 2. Aksi ketika tombol "Buka Web" diklik
         binding.btnOpenWeb.setOnClickListener {
-            // Pindah ke halaman WebView
-            val intent = Intent(this, WebBinaDesaActivity::class.java)
+            val intent = Intent(requireContext(), WebBinaDesaActivity::class.java)
             startActivity(intent)
         }
         // ==========================================
         // TOMBOL 1: Pindah ke Kalkulator (Pertemuan 2)
         // ==========================================
         binding.btnCalculator.setOnClickListener {
-            val intent = Intent(this, P2Activity::class.java) // Sesuaikan nama class Pertemuan 2
+            val intent = Intent(requireContext(), P2Activity::class.java) // Sesuaikan nama class Pertemuan 2
             startActivity(intent)
         }
 
@@ -56,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         // TOMBOL 2: Data Aset (Halaman Custom 1)
         // ==========================================
         binding.btnJobVacancy.setOnClickListener {
-            val intent = Intent(this, CustomOneActivity::class.java)
+            val intent = Intent(requireContext(), CustomOneActivity::class.java)
             // Menyisipkan data (Kunci, Nilai) untuk Inventaris
             intent.putExtra("EXTRA_TITLE", "Manajemen Data Aset")
             intent.putExtra("EXTRA_DESC", "Pantau dan kelola seluruh daftar aset milik desa, mulai dari peralatan kantor hingga infrastruktur, secara akurat.")
@@ -67,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         // TOMBOL 3: Tentang Aplikasi (Halaman Custom 2)
         // ==========================================
         binding.btnCareerTips.setOnClickListener {
-            val intent = Intent(this, CustomTwoActivity::class.java)
+            val intent = Intent(requireContext(), CustomTwoActivity::class.java)
             // Menyisipkan informasi mengenai project Bina Desa
             intent.putExtra("EXTRA_TITLE", "Tentang Bina Desa")
             intent.putExtra("EXTRA_DESC", "Aplikasi Sistem Informasi Inventaris Aset Desa yang dirancang untuk meningkatkan transparansi dan akuntabilitas pengelolaan aset.")
@@ -78,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         // TOMBOL 4: Logout (AlertDialog & Snackbar)
         // ==========================================
         binding.btnLogout.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
+            val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Konfirmasi Logout")
             builder.setMessage("Apakah Anda yakin ingin keluar dari aplikasi Inventaris Desa?")
 
@@ -88,10 +85,10 @@ class MainActivity : AppCompatActivity() {
                 sharedPref.edit {
                     clear()
                 }
-                val intent = Intent(this, P3Activity::class.java)
+                val intent = Intent(requireContext(), P3Activity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
-                finish()
+                requireActivity().finish()
             }
 
             // Jika tombol "Batal" diklik
@@ -107,15 +104,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Lifecycle: onStart (Sistem mulai menampilkan halaman ke user)
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart: Halaman Utama Mulai Terlihat")
-    }
-
-    // Lifecycle: onDestroy (Sistem menghancurkan halaman dari memori)
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy: Halaman Utama Dihancurkan")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
