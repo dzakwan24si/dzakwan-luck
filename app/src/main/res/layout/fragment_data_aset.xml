@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_screen"
+    tools:context=".Home.DataAsetFragment">
+
+    <!-- 1. Toolbar Atas -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_data_aset"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_blue_desa"
+            app:title="Data Aset Inventaris"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- 2. Tombol Tambah Aset Baru (Persis seperti di Web) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_tambah_aset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Aset Baru"
+            android:textAllCaps="false"
+            app:icon="@android:drawable/ic_input_add"
+            app:cornerRadius="8dp"
+            android:backgroundTint="@color/primary_blue_desa"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- 3. Fitur Filter Kondisi (Chip & ChipGroup) -->
+        <HorizontalScrollView
+            android:id="@+id/scroll_chips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/btn_tambah_aset">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupKondisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+                <!-- Chip 1: Semua Kondisi (Centang Hitam bawaan) -->
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semua Kondisi"
+                    android:checked="true"
+                    app:checkedIconVisible="true" />
+
+                <!-- Chip 2: Baik (Background Hijau, Centang Putih) -->
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baik"
+                    app:chipBackgroundColor="#28A745"
+                    android:textColor="@color/white"
+                    app:checkedIconVisible="true"
+                    app:checkedIconTint="@color/white" />
+
+                <!-- Chip 3: Rusak Ringan (Background Kuning, Centang Hitam) -->
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rusak Ringan"
+                    app:chipBackgroundColor="#FFC107"
+                    android:textColor="@color/text_dark"
+                    app:checkedIconVisible="true"
+                    app:checkedIconTint="@color/text_dark" />
+
+                <!-- Chip 4: Rusak Berat (Background Merah, Centang Putih) -->
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rusak Berat"
+                    app:chipBackgroundColor="#DC3545"
+                    android:textColor="@color/white"
+                    app:checkedIconVisible="true"
+                    app:checkedIconTint="@color/white" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <!-- Area Kosong untuk Tabel Data Aset Nanti -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tabel Data Aset akan tampil di sini..."
+            android:textColor="@color/text_gray"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="64dp"
+            app:layout_constraintTop_toBottomOf="@id/scroll_chips"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

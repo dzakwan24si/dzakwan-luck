@@ -1,239 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_screen"
+    tools:context=".Home.HomeFragment">
+
+    <!-- ScrollView agar semua konten bisa di-scroll -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/bg_screen"
-        tools:context=".Home.HomeFragment">
+        android:fillViewport="true">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dp">
+
+            <!-- 1. Background Drawable (Wave) menempel di atas -->
+
+            <!-- Bagian Profil (Diletakkan di atas Wave) -->
+            <View
+                android:id="@+id/bg_wave"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/primary_blue_desa"
-                app:titleTextColor="@color/white" />
-        </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="160dp"
+                android:background="@drawable/bg_header_wave"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_social_outline"
+                android:src="@drawable/my_foto_removebg_preview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/tv_greeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Good Morning 👍"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/iv_profile"
+                app:layout_constraintTop_toTopOf="@id/iv_profile" />
+
+            <TextView
+                android:id="@+id/tv_username_dashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="M.Dzakwan Syafiq"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/iv_profile"
+                app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
+
+            <ImageView
+                android:id="@+id/iv_notif"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_social_outline"
+                android:padding="8dp"
+                android:src="@android:drawable/ic_popup_reminder"
+                app:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_profile" />
+
+            <!-- 2. GridLayout untuk 4 Kartu Ringkasan -->
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/grid_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="24dp">
+                android:layout_marginTop="44dp"
+                android:paddingHorizontal="16dp"
+                app:columnCount="2"
+                app:useDefaultMargins="true"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile">
 
-                <ImageView
-                    android:id="@+id/iv_profile"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/bg_social_outline"
-                    android:src="@drawable/my_foto_removebg_preview"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_greeting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Good Morning 👍"
-                    android:textColor="@color/text_gray"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_profile"
-                    app:layout_constraintTop_toTopOf="@id/iv_profile" />
-
-                <TextView
-                    android:id="@+id/tv_username_dashboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="M.Dzakwan Syafiq"
-                    android:textColor="@color/text_dark"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_profile"
-                    app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
-
-                <ImageView
-                    android:id="@+id/iv_notif"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_social_outline"
-                    android:padding="8dp"
-                    android:src="@android:drawable/ic_popup_reminder"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_profile"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/iv_profile" />
-
+                <!-- Kartu 1: Total Aset -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/banner_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_marginTop="32dp"
-                    app:cardBackgroundColor="@color/primary_blue_desa"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:layout_constraintTop_toBottomOf="@id/iv_profile">
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="20dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <TextView
-                            android:layout_width="202dp"
-                            android:layout_height="62dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Kelola aset desa dengan mudah dan transparan!"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_banner_icon"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Aset"
+                            android:textSize="12sp"/>
 
-                        <ImageView
-                            android:id="@+id/iv_banner_icon"
-                            android:layout_width="109dp"
-                            android:layout_height="107dp"
-                            android:src="@drawable/koper"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.428" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="50"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_dark"/>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tv_menu_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="Main Menu"
-                    android:textColor="@color/text_dark"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/banner_card" />
+                <!-- Kartu 2: Nilai Aset -->
+                <com.google.android.material.card.MaterialCardView
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
 
-                <GridLayout
-                    android:id="@+id/grid_menu"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nilai Aset"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp 693 Jt"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_dark"/>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Tambahkan Kartu 3 & 4 di sini nanti -->
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- 3. Banner Card (Dipindahkan ke bawah Ringkasan) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/banner_card"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="24dp"
+                app:cardBackgroundColor="@color/primary_blue_desa"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/grid_summary">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:columnCount="2"
-                    android:rowCount="2"
-                    app:layout_constraintTop_toBottomOf="@id/tv_menu_title">
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
 
-                    <Button
-                        android:id="@+id/btn_calculator"
-                        android:layout_width="0dp"
-                        android:layout_height="110dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Kalkulator"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_dark"
-                        app:cornerRadius="16dp"
-                        app:icon="@android:drawable/ic_menu_today"
-                        app:iconGravity="textTop"
-                        app:iconSize="32dp"
-                        app:iconTint="@color/primary_blue_desa"
-                        app:strokeColor="@color/border_gray"
-                        app:strokeWidth="1dp" />
+                    <TextView
+                        android:layout_width="202dp"
+                        android:layout_height="62dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Kelola aset desa dengan mudah dan transparan!"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_banner_icon"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
-                        android:id="@+id/btn_job_vacancy"
-                        android:layout_width="0dp"
-                        android:layout_height="110dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Data Aset"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_dark"
-                        app:cornerRadius="16dp"
-                        app:icon="@android:drawable/ic_menu_search"
-                        app:iconGravity="textTop"
-                        app:iconSize="32dp"
-                        app:iconTint="@color/primary_blue_desa"
-                        app:strokeColor="@color/border_gray"
-                        app:strokeWidth="1dp" />
+                    <ImageView
+                        android:id="@+id/iv_banner_icon"
+                        android:layout_width="109dp"
+                        android:layout_height="107dp"
+                        android:src="@drawable/koper"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.428" />
 
-                    <Button
-                        android:id="@+id/btn_career_tips"
-                        android:layout_width="0dp"
-                        android:layout_height="110dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Tentang"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_dark"
-                        app:cornerRadius="16dp"
-                        app:icon="@android:drawable/ic_menu_info_details"
-                        app:iconGravity="textTop"
-                        app:iconSize="32dp"
-                        app:iconTint="@color/primary_blue_desa"
-                        app:strokeColor="@color/border_gray"
-                        app:strokeWidth="1dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                    <Button
-                        android:id="@+id/btn_logout"
-                        android:layout_width="0dp"
-                        android:layout_height="110dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Logout"
-                        android:textAllCaps="false"
-                        android:textColor="@color/danger_red"
-                        app:cornerRadius="16dp"
-                        app:icon="@android:drawable/ic_lock_power_off"
-                        app:iconGravity="textTop"
-                        app:iconSize="32dp"
-                        app:iconTint="@color/danger_red"
-                        app:strokeColor="@color/danger_red"
-                        app:strokeWidth="1dp" />
+            <!-- 4. Menu Utama -->
+            <TextView
+                android:id="@+id/tv_menu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Main Menu"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_card" />
 
-                </GridLayout>
+            <GridLayout
+                android:id="@+id/grid_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:columnCount="2"
+                android:rowCount="2"
+                app:layout_constraintTop_toBottomOf="@id/tv_menu_title">
 
                 <Button
-                    android:id="@+id/btn_open_web"
+                    android:id="@+id/btn_calculator"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:backgroundTint="@color/primary_blue_desa"
+                    android:layout_height="110dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Buka Web Dashboard Admin"
+                    android:text="Kalkulator"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:cornerRadius="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/grid_menu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:textColor="@color/text_dark"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_kalkulator"
+                    app:iconGravity="textTop"
+                    app:iconSize="32dp"
+                    app:iconTint="@color/primary_blue_desa"
+                    app:strokeColor="@color/border_gray"
+                    app:strokeWidth="1dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/btn_job_vacancy"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Data Aset"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_dark"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_data_aset"
+                    app:iconGravity="textTop"
+                    app:iconSize="32dp"
+                    app:iconTint="@color/primary_blue_desa"
+                    app:strokeColor="@color/border_gray"
+                    app:strokeWidth="1dp" />
+
+                <Button
+                    android:id="@+id/btn_career_tips"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Tentang"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_dark"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_tentang"
+                    app:iconGravity="textTop"
+                    app:iconSize="32dp"
+                    app:iconTint="@color/primary_blue_desa"
+                    app:strokeColor="@color/border_gray"
+                    app:strokeWidth="1dp" />
+
+                <Button
+                    android:id="@+id/btn_user"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Manajemen User"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_dark"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_menu_myplaces"
+                    app:iconGravity="textTop"
+                    app:iconSize="32dp"
+                    app:iconTint="@color/primary_blue_desa"
+                    app:strokeColor="@color/border_gray"
+                    app:strokeWidth="1dp" />
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textColor="@color/danger_red"
+                    app:cornerRadius="16dp"
+                    app:icon="@android:drawable/ic_lock_power_off"
+                    app:iconGravity="textTop"
+                    app:iconSize="32dp"
+                    app:iconTint="@color/danger_red"
+                    app:strokeColor="@color/danger_red"
+                    app:strokeWidth="1dp" />
+
+
+            </GridLayout>
+
+            <!-- 5. Tombol Ekstra Bawah -->
+            <Button
+                android:id="@+id/btn_open_web"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:backgroundTint="@color/primary_blue_desa"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Buka Web Dashboard Admin"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="12dp"
+                app:layout_constraintTop_toBottomOf="@id/grid_menu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

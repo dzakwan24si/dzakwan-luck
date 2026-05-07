@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home Inventaris"
 
         // 2. Aksi ketika tombol "Buka Web" diklik
@@ -53,11 +52,10 @@ class HomeFragment : Fragment() {
         // TOMBOL 2: Data Aset (Halaman Custom 1)
         // ==========================================
         binding.btnJobVacancy.setOnClickListener {
-            val intent = Intent(requireContext(), CustomOneActivity::class.java)
-            // Menyisipkan data (Kunci, Nilai) untuk Inventaris
-            intent.putExtra("EXTRA_TITLE", "Manajemen Data Aset")
-            intent.putExtra("EXTRA_DESC", "Pantau dan kelola seluruh daftar aset milik desa, mulai dari peralatan kantor hingga infrastruktur, secara akurat.")
-            startActivity(intent)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, DataAsetFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
         // ==========================================
@@ -101,6 +99,16 @@ class HomeFragment : Fragment() {
             // Tampilkan Dialog
             val dialog = builder.create()
             dialog.show()
+        }
+
+        // ==========================================
+        // TOMBOL 5: Management User
+        // ==========================================
+        binding.btnUser.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, ManajemenUserFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 

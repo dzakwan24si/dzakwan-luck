@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_screen"
+    tools:context=".TambahAsetFragment">
+
+    <!-- Toolbar Atas -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_tambah_aset"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_blue_desa"
+            app:title="Tambah Aset Baru"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ScrollView agar form bisa di-scroll saat keyboard muncul -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 1. Input Nama Aset -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Nama Aset"
+                app:startIconDrawable="@android:drawable/ic_menu_edit">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nama_aset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 2. Input Kategori Aset -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Kategori (Contoh: Elektronik, Kendaraan)"
+                app:startIconDrawable="@android:drawable/ic_menu_agenda">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 3. Input Nilai/Harga Aset (Dengan Prefix Rp) -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="Nilai Aset"
+                app:prefixText="Rp "
+                app:startIconDrawable="@android:drawable/ic_menu_sort_by_size">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nilai_aset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 4. Material Button untuk Simpan -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_simpan_aset"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Simpan Data Aset"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:backgroundTint="@color/primary_blue_desa"
+                app:icon="@android:drawable/ic_menu_save"
+                app:iconGravity="textStart"
+                app:cornerRadius="12dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
