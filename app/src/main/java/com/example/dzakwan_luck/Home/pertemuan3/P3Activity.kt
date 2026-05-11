@@ -1,5 +1,6 @@
 package com.example.dzakwan_luck.Home.pertemuan3
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,7 @@ import com.example.dzakwan_luck.databinding.ActivityP3Binding
 import androidx.core.content.edit
 import com.example.dzakwan_luck.BaseActivity
 import com.example.dzakwan_luck.Home.HomeFragment
+import com.example.dzakwan_luck.RegisterActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class P3Activity : AppCompatActivity() {
@@ -25,27 +27,36 @@ class P3Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.etUsername.text.toString()
-            val password = binding.etPassword.text.toString()
-            if (username == password) {
-                sharedPref.edit {
-                    putBoolean("isLogin", true)
-                    putString("username", username)
-                }
-                Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, BaseActivity::class.java)
-                startActivity(intent)
-                finish()
+            val inputUser = binding.etUsername.text.toString()
+            val inputPass = binding.etPassword.text.toString()
 
-            } else {
+            val sp = getSharedPreferences("QuizB_Prefs", Context.MODE_PRIVATE)
+            val spUser = sp.getString("username", "")
+            val spPass = sp.getString("password", "")
+
+            // Kondisi 1: username == password (syarat praktikum sebelumnya)
+            if (inputUser.isNotEmpty() && inputUser == inputPass) {
+                Toast.makeText(this, "Login Praktikum Berhasil", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, BaseActivity::class.java))
+                finish()
+            }
+            // Kondisi 2: username dan password cocok dengan di SP
+            else if (inputUser.isNotEmpty() && inputUser == spUser && inputPass == spPass) {
+                Toast.makeText(this, "Login Registrasi Berhasil", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, BaseActivity::class.java))
+                finish()
+            }
+            else {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Login Gagal")
-                    .setMessage("Silahkan coba lagi")
-                    .setNegativeButton("Ok") { dialog, _ ->
-                        dialog.dismiss()
-                    }
+                    .setMessage("Username atau password yang Anda masukkan salah. Silakan coba lagi.")
+                    .setPositiveButton("Mengerti", null)
                     .show()
             }
+        }
+
+        binding.signUp.setOnClickListener { // Beri ID tv_sign_up di XML pada tulisan Sign Up
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

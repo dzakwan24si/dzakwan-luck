@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Validasi Data"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="24sp"
+        android:textColor="#2D3748"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_ringkasan_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="#4A5568"
+        android:textSize="14sp"
+        android:background="@drawable/bg_input_outline"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_error_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FC8181"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_submit_validasi"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Submit Validasi"
+        android:fontFamily="@font/poppins_bold"
+        android:backgroundTint="@color/primary_blue_desa"
+        app:cornerRadius="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btn_kembali_perbaiki"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Kembali untuk Perbaiki"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/primary_blue_desa"
+        android:backgroundTint="#FFFFFF"
+        app:strokeColor="@color/primary_blue_desa"
+        app:strokeWidth="1dp"
+        app:cornerRadius="12dp"
+        android:visibility="gone"/> </LinearLayout>
