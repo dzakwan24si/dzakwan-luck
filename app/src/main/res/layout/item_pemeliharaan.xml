@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:layout_margin="6dp"
+
+    app:cardCornerRadius="12dp"
+
+    app:cardElevation="2dp"
+
+    app:strokeColor="#E2E8F0"
+
+    app:strokeWidth="1dp">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="12dp">
+
+
+
+        <ImageView
+
+            android:id="@+id/img_pemeliharaan"
+
+            android:layout_width="0dp"
+
+            android:layout_height="100dp"
+
+            android:scaleType="centerCrop"
+
+            android:background="#E2E8F0"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+        <TextView
+
+            android:id="@+id/tv_tanggal_pemeliharaan"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_margin="8dp"
+
+            android:background="#A0AEC0"
+
+            android:fontFamily="@font/poppins_regular"
+
+            android:paddingHorizontal="6dp"
+
+            android:paddingVertical="3dp"
+
+            android:text="16/04/2026"
+
+            android:textColor="#FFFFFF"
+
+            android:textSize="9sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+
+            android:id="@+id/tv_nama_aset"
+
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="12dp"
+
+            android:layout_marginTop="8dp"
+
+            android:fontFamily="@font/poppins_bold"
+
+            android:maxLines="2"
+
+            android:ellipsize="end"
+
+            android:text="Nama Aset\nAST-XXX"
+
+            android:textColor="#2D3748"
+
+            android:textSize="13sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/img_pemeliharaan" />
+
+
+
+        <TextView
+
+            android:id="@+id/tv_tindakan"
+
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="12dp"
+
+            android:fontFamily="@font/poppins_regular"
+
+            android:maxLines="1"
+
+            android:ellipsize="end"
+
+            android:text="Tindakan Pemeliharaan..."
+
+            android:textColor="#718096"
+
+            android:textSize="11sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_nama_aset" />
+
+
+
+        <TextView
+
+            android:id="@+id/tv_biaya"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="12dp"
+
+            android:layout_marginTop="12dp"
+
+            android:fontFamily="@font/poppins_bold"
+
+            android:text="Rp 0"
+
+            android:textColor="#28A745"
+
+            android:textSize="13sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_tindakan" />
+
+
+
+        <TextView
+
+            android:id="@+id/tv_badge_bukti"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="12dp"
+
+            android:background="#6C757D"
+
+            android:fontFamily="@font/poppins_bold"
+
+            android:paddingHorizontal="6dp"
+
+            android:paddingVertical="3dp"
+
+            android:text="📎 File"
+
+            android:textColor="#FFFFFF"
+
+            android:textSize="9sp"
+
+            android:visibility="gone"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintBottom_toBottomOf="@id/tv_biaya"
+
+            app:layout_constraintTop_toTopOf="@id/tv_biaya" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

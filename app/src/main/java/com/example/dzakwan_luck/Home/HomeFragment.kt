@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         // ==========================================
         binding.btnJobVacancy.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, DataAsetFragment())
+                .replace(R.id.fragment_container, InventarisFragment()) // Memanggil layout ber-Tab
                 .addToBackStack(null)
                 .commit()
         }
