@@ -73,7 +73,7 @@
                 android:background="@drawable/bg_social_outline"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_popup_reminder"
-                app:tint="@color/white"
+                app:tint="@color/primary_blue_desa"
                 app:layout_constraintBottom_toBottomOf="@id/iv_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/iv_profile" />

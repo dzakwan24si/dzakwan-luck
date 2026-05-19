@@ -24,7 +24,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dp">
 
             <View
                 android:id="@+id/view_header"
@@ -73,10 +74,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_dev_name" />
 
+            <!-- Card Informasi Mahasiswa -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_informasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_dev_role">
@@ -105,17 +109,99 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="Kampus: Politeknik Caltex Riau"
-                        android:fontFamily="@font/poppins_regular"/>
+                        android:fontFamily="@font/poppins_regular" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Prodi: Sistem Informasi"
-                        android:fontFamily="@font/poppins_regular"/>
+                        android:fontFamily="@font/poppins_regular" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card Sosial Media & Link (Konsep Modern Baru) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:layout_constraintTop_toBottomOf="@id/cv_informasi">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Temukan Saya"
+                        android:textColor="@color/primary_blue_desa" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/border_gray" />
+
+                    <!-- Button Github -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_github"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="GitHub"
+                        android:textColor="@color/text_dark"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_github"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/text_dark"
+                        app:strokeColor="@color/border_gray" />
+
+                    <!-- Button Website -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_website"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Website Pribadi"
+                        android:textColor="@color/text_dark"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_website"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/primary_blue_desa"
+                        app:strokeColor="@color/border_gray" />
+
+                    <!-- Button Instagram -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_instagram"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Instagram"
+                        android:textColor="@color/text_dark"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/ic_instagram"
+                        app:iconGravity="textStart"
+                        app:iconTint="#E1306C"
+                        app:strokeColor="@color/border_gray" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

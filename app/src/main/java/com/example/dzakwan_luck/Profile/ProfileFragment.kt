@@ -1,6 +1,8 @@
 package com.example.dzakwan_luck.Profile
 
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +29,22 @@ class ProfileFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = "Profil Pengembang"
         }
+        // 1. Aksi klik untuk GitHub
+        binding.btnGithub.setOnClickListener {
+            bukaLink("https://github.com/dzakwan24si")
+        }
+        // 2. Aksi klik untuk Website
+        binding.btnWebsite.setOnClickListener {
+            bukaLink("https://dzakwan.vercel.app/")
+        }
+        // 3. Aksi klik untuk Instagram
+        binding.btnInstagram.setOnClickListener {
+            bukaLink("https://instagram.com/syafiqdzakwan")
+        }
+    }
+    private fun bukaLink(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
