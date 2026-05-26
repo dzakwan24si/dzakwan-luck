@@ -1,5 +1,6 @@
 package com.example.dzakwan_luck.Home
 
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dzakwan_luck.Api.ApiClient
+import com.example.dzakwan_luck.Home.berita.NewsAdapter
 import com.example.dzakwan_luck.Home.pertemuan3.P3Activity
 import com.example.dzakwan_luck.Home.pertemuan4.CustomOneActivity
 import com.example.dzakwan_luck.Home.pertemuan4.CustomTwoActivity
@@ -18,6 +24,7 @@ import com.example.dzakwan_luck.P2Activity
 import com.example.dzakwan_luck.R
 import com.example.dzakwan_luck.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -34,6 +41,8 @@ class HomeFragment : Fragment() {
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Home Inventaris"
+
+        loadNewsBanner()
 
         // 2. Aksi ketika tombol "Buka Web" diklik
         binding.btnOpenWeb.setOnClickListener {
@@ -79,14 +88,15 @@ class HomeFragment : Fragment() {
 
             // Jika tombol "Ya" diklik
             builder.setPositiveButton("Ya") { dialog, which ->
-                dialog.dismiss()
-                sharedPref.edit {
-                    clear()
-                }
+                // Hapus status login
+                val editor = requireActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE).edit()
+                editor.putBoolean("isLoggedIn", false)
+                editor.apply()
+
                 val intent = Intent(requireContext(), P3Activity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
-                requireActivity().finish()
+
             }
 
             // Jika tombol "Batal" diklik
@@ -109,6 +119,25 @@ class HomeFragment : Fragment() {
                 .replace(R.id.fragment_container, ManajemenUserFragment())
                 .addToBackStack(null)
                 .commit()
+        }
+    }
+
+    private fun loadNewsBanner() {
+        // Setup RecyclerView secara Horizontal
+        binding.rvNewsBanner.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        lifecycleScope.launch {
+            try {
+                // Mengambil data dari Internet
+                val response = ApiClient.newsApiService.getLatestNews()
+                val adapter = NewsAdapter(response.results) { judul ->
+                    // Memunculkan Toast saat diklik
+                    Toast.makeText(requireContext(), "Membaca: $judul", Toast.LENGTH_SHORT).show()
+                }
+                binding.rvNewsBanner.adapter = adapter
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat berita", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

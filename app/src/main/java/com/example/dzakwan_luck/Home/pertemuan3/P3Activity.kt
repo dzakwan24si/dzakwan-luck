@@ -37,6 +37,10 @@ class P3Activity : AppCompatActivity() {
             // Kondisi 1: username == password (syarat praktikum sebelumnya)
             if (inputUser.isNotEmpty() && inputUser == inputPass) {
                 Toast.makeText(this, "Login Praktikum Berhasil", Toast.LENGTH_SHORT).show()
+                // Simpan status bahwa user berhasil Login
+                val editor = getSharedPreferences("UserSession", MODE_PRIVATE).edit()
+                editor.putBoolean("isLoggedIn", true)
+                editor.apply()
                 startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             }
