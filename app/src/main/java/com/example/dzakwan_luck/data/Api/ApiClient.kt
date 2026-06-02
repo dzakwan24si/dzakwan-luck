@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.Api
+package com.example.dzakwan_luck.data.Api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

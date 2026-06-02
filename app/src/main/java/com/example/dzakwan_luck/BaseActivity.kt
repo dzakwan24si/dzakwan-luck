@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.dzakwan_luck.About.AboutFragment
 import com.example.dzakwan_luck.Home.HomeFragment
+import com.example.dzakwan_luck.Note.FragmentNote
 import com.example.dzakwan_luck.Profile.ProfileFragment
 import com.example.dzakwan_luck.databinding.ActivityBaseBinding
 
@@ -37,6 +38,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.nav_profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.nav_note -> {
+                    replaceFragment(FragmentNote())
                     true
                 }
                 else ->false

@@ -11,13 +11,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dzakwan_luck.Api.ApiClient
+import com.example.dzakwan_luck.data.Api.ApiClient
 import com.example.dzakwan_luck.Home.berita.NewsAdapter
 import com.example.dzakwan_luck.Home.pertemuan3.P3Activity
-import com.example.dzakwan_luck.Home.pertemuan4.CustomOneActivity
 import com.example.dzakwan_luck.Home.pertemuan4.CustomTwoActivity
 import com.example.dzakwan_luck.Home.pertemuan6.WebBinaDesaActivity
 import com.example.dzakwan_luck.P2Activity

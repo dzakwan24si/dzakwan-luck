@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.Api
+package com.example.dzakwan_luck.data.Api
 
 data class NewsResponse(
     val results: List<NewsModel>
