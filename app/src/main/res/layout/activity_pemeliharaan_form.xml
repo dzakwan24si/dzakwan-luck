@@ -76,6 +76,20 @@
                     android:hint="Total Biaya (Rp)" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Input Reminder (Opsional) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etReminderMenit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Ingatkan cek lokasi (dalam menit) - Opsional" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Checkbox Ada Bukti -->
             <CheckBox
                 android:id="@+id/cbAdaBukti"
