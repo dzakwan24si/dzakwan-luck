@@ -118,6 +118,12 @@ class HomeFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+        // Logika klik untuk membuka halaman Scanner Aset (Pertemuan 13)
+        binding.btnScannerAset.setOnClickListener {
+            val intent = Intent(requireContext(), com.example.dzakwan_luck.ScannerAsetActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadNewsBanner() {

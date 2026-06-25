@@ -9,8 +9,8 @@ class InventarisTabsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> TabDaftarAsetFragment() // Tab ke-1 berisi RecyclerView
-            1 -> TabPemeliharaanFragment() // Tab ke-2 (Bisa kamu isi TabPemeliharaanFragment nanti)
-            2 -> TabMutasiFragment() // Tab ke-3 (Bisa kamu isi TabMutasiFragment nanti)
+            1 -> TabPemeliharaanFragment() // Tab ke-2
+            2 -> TabMutasiFragment() // Tab ke-3
             else -> throw IllegalStateException("Posisi tidak valid")
         }
     }

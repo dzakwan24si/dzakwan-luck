@@ -61,4 +61,14 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
+    // CameraX (Update ke versi 1.4.0 untuk Android 15)
+    implementation("androidx.camera:camera-camera2:1.4.0")
+    implementation("androidx.camera:camera-lifecycle:1.4.0")
+    implementation("androidx.camera:camera-view:1.4.0")
+
+    // ML Kit Barcode Scanning (Update ke versi 17.3.0 untuk 16 KB alignment)
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
+
+    // ZXing (Untuk mencetak/generate QR Code)
+    implementation("com.google.zxing:core:3.5.2")
 }
