@@ -3,5 +3,6 @@
     <string name="text_underlined"><u>KALKULATOR BANGUN DATAR</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="jenis_mutasi_array"><item>Peminjaman</item><item>Pengembalian</item><item>Perbaikan</item></string-array>
 </resources>
 

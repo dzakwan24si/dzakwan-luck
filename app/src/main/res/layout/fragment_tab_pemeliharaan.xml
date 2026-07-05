@@ -11,7 +11,7 @@
         android:id="@+id/btn_tambah_pemeliharaan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tambah"
+        android:text="Tambah Pemeliharaan"
         android:textAllCaps="false"
         app:icon="@android:drawable/ic_menu_add"
         app:cornerRadius="8dp"

@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dzakwanluck">
         <activity
+            android:name=".Home.MutasiFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScannerAsetActivity"
             android:exported="false" />
 

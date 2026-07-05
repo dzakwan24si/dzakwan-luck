@@ -1,17 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.TabMutasiFragment">
+    android:background="#FFFFFF"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Tombol Tambah Mutasi (Persis seperti Tambah Aset) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTambahMutasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah Mutasi Baru"
+        android:textAllCaps="false"
+        app:icon="@android:drawable/ic_input_add"
+        app:cornerRadius="8dp"
+        android:backgroundTint="#2A4B9B"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Filter Badges / Chips -->
+    <HorizontalScrollView
+        android:id="@+id/hsvFilters"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:text="Konten Mutasi" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/btnTambahMutasi">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Badge: Semua -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFilterSemua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="#E8EAF6"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/tvFilterSemua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
+                    android:text="✓ Semua Mutasi"
+                    android:textColor="#3F51B5"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Badge: Peminjaman -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFilterPeminjaman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/tvFilterPeminjaman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
+                    android:text="Peminjaman"
+                    android:textColor="#757575"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Badge: Pengembalian -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFilterPengembalian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/tvFilterPengembalian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
+                    android:text="Pengembalian"
+                    android:textColor="#757575"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Badge: Perbaikan -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFilterPerbaikan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/tvFilterPerbaikan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
+                    android:text="Perbaikan"
+                    android:textColor="#757575"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Grid List Mutasi -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMutasi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/hsvFilters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
