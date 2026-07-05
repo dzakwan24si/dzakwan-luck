@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.Home
+package com.example.dzakwan_luck.Home.pemeliharaan
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.dzakwan_luck.PemeliharaanFormActivity
+import com.example.dzakwan_luck.Home.pemeliharaan.PemeliharaanFormActivity
 import com.example.dzakwan_luck.data.AppDatabase
 import com.example.dzakwan_luck.data.entity.PemeliharaanEntity
 import com.example.dzakwan_luck.databinding.FragmentTabPemeliharaanBinding

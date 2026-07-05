@@ -35,10 +35,11 @@ class OnboardingActivity : AppCompatActivity() {
             return
         }
 
-        // --- Kalau belum dua-duanya, baru jalankan Onboarding di bawah ini ---
+
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // --- Kalau belum dua-duanya, baru jalankan Onboarding di bawah ini ---
         val fragments = listOf(Tutorial1Fragment(), Tutorial2Fragment(), Tutorial3Fragment())
         val adapter = TutorialFragmentAdapter(this, fragments)
         binding.vpOnboarding.adapter = adapter

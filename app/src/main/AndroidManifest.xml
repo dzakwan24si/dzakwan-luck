@@ -42,7 +42,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".PemeliharaanFormActivity"
+            android:name=".Home.pemeliharaan.PemeliharaanFormActivity"
             android:exported="false" />
         <activity
             android:name=".Note.NoteFormActivity"

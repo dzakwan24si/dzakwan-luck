@@ -2,6 +2,7 @@ package com.example.dzakwan_luck.Home
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.dzakwan_luck.Home.pemeliharaan.TabPemeliharaanFragment
 
 class InventarisTabsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 3 // 3 Menu: Data Aset, Pemeliharaan, Mutasi

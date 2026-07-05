@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck.Home
+package com.example.dzakwan_luck.Home.pemeliharaan
 
 data class PemeliharaanModel(
     val tanggal: String,

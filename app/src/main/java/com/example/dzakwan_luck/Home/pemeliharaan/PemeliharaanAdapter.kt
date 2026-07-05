@@ -1,10 +1,12 @@
-package com.example.dzakwan_luck.Home
+package com.example.dzakwan_luck.Home.pemeliharaan
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dzakwan_luck.Home.pemeliharaan.PemeliharaanFormActivity
 import com.example.dzakwan_luck.data.entity.PemeliharaanEntity
 import com.example.dzakwan_luck.databinding.ItemPemeliharaanBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -41,6 +43,22 @@ class PemeliharaanAdapter(
             .load(item.imageUrl)
             .centerCrop()
             .into(holder.binding.imgPemeliharaan)
+
+        // Logika klik untuk mengedit data
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, PemeliharaanFormActivity::class.java).apply {
+                // Semua properti dari Entity wajib dikirim
+                putExtra("EXTRA_ID", item.id)
+                putExtra("EXTRA_TANGGAL", item.tanggal)
+                putExtra("EXTRA_NAMA_ASET", item.namaAset)
+                putExtra("EXTRA_KODE_ASET", item.kodeAset)
+                putExtra("EXTRA_TINDAKAN", item.tindakan)
+                putExtra("EXTRA_BIAYA", item.biaya)
+                putExtra("EXTRA_ADA_BUKTI", item.adaBukti)
+                putExtra("EXTRA_IMAGE_URL", item.imageUrl)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
 
         // Fitur Hapus Data (Tekan Tahan Kartunya)
         holder.itemView.setOnLongClickListener {

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.dzakwan_luck.data.entity.PemeliharaanEntity
 
 @Dao
@@ -13,6 +14,9 @@ interface PemeliharaanDao {
 
     @Insert
     suspend fun insertPemeliharaan(pemeliharaan: PemeliharaanEntity)
+
+    @Update
+    suspend fun updatePemeliharaan(pemeliharaan: PemeliharaanEntity)
 
     @Delete
     suspend fun deletePemeliharaan(pemeliharaan: PemeliharaanEntity)
