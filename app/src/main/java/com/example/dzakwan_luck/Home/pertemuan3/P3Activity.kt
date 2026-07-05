@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.dzakwan_luck.MainActivity
 import com.example.dzakwan_luck.databinding.ActivityP3Binding
 import androidx.core.content.edit
 import com.example.dzakwan_luck.BaseActivity

@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.dzakwan_luck.MainActivity
+import com.example.dzakwan_luck.BaseActivity
 import com.example.dzakwan_luck.data.AppDatabase
 import com.example.dzakwan_luck.data.entity.PemeliharaanEntity
 import com.example.dzakwan_luck.databinding.ActivityPemeliharaanFormBinding
@@ -136,7 +136,7 @@ class PemeliharaanFormActivity : AppCompatActivity() {
                                     minute = calendar.get(Calendar.MINUTE),
                                     title = "🛠️ Cek Pemeliharaan",
                                     message = "Waktunya mengecek hasil perbaikan untuk aset: $nama!",
-                                    targetActivity = MainActivity::class.java // Ganti jika halaman utamamu beda
+                                    targetActivity = BaseActivity::class.java
                                 )
                                 Toast.makeText(this@PemeliharaanFormActivity, "Data tersimpan & Pengingat disetel untuk $menit menit lagi", Toast.LENGTH_LONG).show()
                             }

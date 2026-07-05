@@ -1,4 +1,4 @@
-package com.example.dzakwan_luck // Sesuaikan package
+package com.example.dzakwan_luck
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,29 +17,9 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // 1. CEK SESI SEBELUM MENAMPILKAN UI
-        val sp = getSharedPreferences("UserSession", MODE_PRIVATE)
-        val isLoggedIn = sp.getBoolean("isLoggedIn", false)
-        val hasSeenOnboarding = sp.getBoolean("hasSeenOnboarding", false)
-
-        if (isLoggedIn) {
-            // Kalau sudah login, langsung ke Dashboard/Home!
-            startActivity(Intent(this, BaseActivity::class.java))
-            finish()
-            return // Hentikan eksekusi kode di bawahnya
-        } else if (hasSeenOnboarding) {
-            // Kalau belum login TAPI sudah pernah lihat Onboarding, langsung ke Login!
-            startActivity(Intent(this, P3Activity::class.java))
-            finish()
-            return
-        }
-
-
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- Kalau belum dua-duanya, baru jalankan Onboarding di bawah ini ---
         val fragments = listOf(Tutorial1Fragment(), Tutorial2Fragment(), Tutorial3Fragment())
         val adapter = TutorialFragmentAdapter(this, fragments)
         binding.vpOnboarding.adapter = adapter
@@ -55,13 +35,14 @@ class OnboardingActivity : AppCompatActivity() {
             }
         })
 
-        // 2. SIMPAN STATUS BAHWA USER SUDAH MELIHAT ONBOARDING
+        // SIMPAN STATUS BAHWA USER SUDAH MELIHAT ONBOARDING
         binding.btnAyoMulai.setOnClickListener {
+            val sp = getSharedPreferences("UserSession", MODE_PRIVATE)
             val editor = sp.edit()
             editor.putBoolean("hasSeenOnboarding", true)
             editor.apply()
 
-            // Pindah ke halaman Login
+            // Pindah ke halaman Login (P3Activity)
             val intent = Intent(this, P3Activity::class.java)
             startActivity(intent)
             finish()

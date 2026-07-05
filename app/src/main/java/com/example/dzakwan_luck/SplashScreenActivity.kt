@@ -1,47 +1,46 @@
 package com.example.dzakwan_luck
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
-import com.example.dzakwan_luck.Home.HomeFragment
-import com.example.dzakwan_luck.databinding.ActivitySplashScreenBinding
 import com.example.dzakwan_luck.Home.pertemuan3.P3Activity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        setContentView(R.layout.activity_splash_screen)
 
-        //Kondisi jika isLogin bernilai true
-        val isLogin = sharedPref.getBoolean("isLogin", false)
-        if (isLogin) {
-            val intent = Intent(this, BaseActivity::class.java)
+        supportActionBar?.hide()
+
+        // Delay selama 2 detik
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            // Panggil memori UserSession milikmu
+            val sp = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+            val isLoggedIn = sp.getBoolean("isLoggedIn", false)
+            val hasSeenOnboarding = sp.getBoolean("hasSeenOnboarding", false)
+
+            val intent = when {
+                isLoggedIn -> {
+                    // Skenario 1: Sudah login -> Ke Dashboard
+                    Intent(this, BaseActivity::class.java)
+                }
+                hasSeenOnboarding -> {
+                    // Skenario 2: Belum login tapi sudah pernah lihat onboarding -> Ke Login (P3Activity)
+                    Intent(this, P3Activity::class.java)
+                }
+                else -> {
+                    // Skenario 3: Baru pertama kali install -> Ke Onboarding
+                    Intent(this, OnboardingActivity::class.java)
+                }
+            }
+
             startActivity(intent)
-            finish() // Kill AuthActivity
-        }
+            finish() // Tutup SplashScreen
 
-        lifecycleScope.launch {
-            delay(2000) //simulasi pengambilan data selama 2 detik
-
-            var intent = Intent(this@SplashScreenActivity, P3Activity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        }, 2000)
     }
 }

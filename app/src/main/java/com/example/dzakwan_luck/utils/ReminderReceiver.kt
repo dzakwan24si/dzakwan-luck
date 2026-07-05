@@ -3,8 +3,7 @@ package com.example.dzakwan_luck.utils
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.example.dzakwan_luck.Home.HomeFragment
-import com.example.dzakwan_luck.MainActivity
+import com.example.dzakwan_luck.BaseActivity
 
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -18,7 +17,7 @@ class ReminderReceiver : BroadcastReceiver() {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
         } else {
-            Intent(context, HomeFragment::class.java) // Activity default jika terjadi error
+            Intent(context, BaseActivity::class.java) // Activity default jika terjadi error
         }
 
         NotificationHelper.showNotification(
